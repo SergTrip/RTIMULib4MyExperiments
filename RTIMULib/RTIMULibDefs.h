@@ -42,23 +42,23 @@
 
 typedef struct
 {
-    uint64_t timestamp;
-    bool fusionPoseValid;
-    RTVector3 fusionPose;
-    bool fusionQPoseValid;
-    RTQuaternion fusionQPose;
-    bool gyroValid;
-    RTVector3 gyro;
-    bool accelValid;
-    RTVector3 accel;
-    bool compassValid;
-    RTVector3 compass;
-    bool pressureValid;
-    RTFLOAT pressure;
-    bool temperatureValid;
-    RTFLOAT temperature;
-    bool humidityValid;
-    RTFLOAT humidity;
+    uint64_t        timestamp;
+    bool            fusionPoseValid;
+    RTVector3       fusionPose;
+    bool            fusionQPoseValid;
+    RTQuaternion    fusionQPose;
+    bool            gyroValid;
+    RTVector3       gyro;
+    bool            accelValid;
+    RTVector3       accel;
+    bool            compassValid;
+    RTVector3       compass;
+    bool            pressureValid;
+    RTFLOAT         pressure;
+    bool            temperatureValid;
+    RTFLOAT         temperature;
+    bool            humidityValid;
+    RTFLOAT         humidity;
 } RTIMU_DATA;
 
 #endif // _RTIMULIBDEFS_H

@@ -31,7 +31,6 @@
 #include "RTIMUHal.h"
 
 //  Settings keys
-
 #define RTIMULIB_IMU_TYPE                   "IMUType"
 #define RTIMULIB_FUSION_TYPE                "FusionType"
 #define RTIMULIB_BUS_IS_I2C                 "BusIsI2C"
@@ -47,7 +46,6 @@
 #define RTIMULIB_I2C_HUMIDITYADDRESS        "I2CHumidityAddress"
 
 //  MPU9150 settings keys
-
 #define RTIMULIB_MPU9150_GYROACCEL_SAMPLERATE "MPU9150GyroAccelSampleRate"
 #define RTIMULIB_MPU9150_COMPASS_SAMPLERATE "MPU9150CompassSampleRate"
 #define RTIMULIB_MPU9150_GYROACCEL_LPF      "MPU9150GyroAccelLpf"
@@ -55,7 +53,6 @@
 #define RTIMULIB_MPU9150_ACCEL_FSR          "MPU9150AccelFSR"
 
 //  MPU9250 settings keys
-
 #define RTIMULIB_MPU9250_GYROACCEL_SAMPLERATE "MPU9250GyroAccelSampleRate"
 #define RTIMULIB_MPU9250_COMPASS_SAMPLERATE "MPU9250CompassSampleRate"
 #define RTIMULIB_MPU9250_GYRO_LPF           "MPU9250GyroLpf"
@@ -64,7 +61,6 @@
 #define RTIMULIB_MPU9250_ACCEL_FSR          "MPU9250AccelFSR"
 
 //  GD20HM303D settings keys
-
 #define RTIMULIB_GD20HM303D_GYRO_SAMPLERATE   "GD20HM303DGyroSampleRate"
 #define RTIMULIB_GD20HM303D_GYRO_BW           "GD20HM303DGyroBW"
 #define RTIMULIB_GD20HM303D_GYRO_HPF          "GD20HM303DGyroHpf"
@@ -79,7 +75,6 @@
 
 
 //  GD20M303DLHC settings keys
-
 #define RTIMULIB_GD20M303DLHC_GYRO_SAMPLERATE   "GD20M303DLHCGyroSampleRate"
 #define RTIMULIB_GD20M303DLHC_GYRO_BW           "GD20M303DLHCGyroBW"
 #define RTIMULIB_GD20M303DLHC_GYRO_HPF          "GD20M303DLHCGyroHpf"
@@ -92,7 +87,6 @@
 #define RTIMULIB_GD20M303DLHC_COMPASS_FSR       "GD20M303DLHCCompassFsr"
 
 //  GD20HM303DLHC settings keys
-
 #define RTIMULIB_GD20HM303DLHC_GYRO_SAMPLERATE  "GD20HM303DLHCGyroSampleRate"
 #define RTIMULIB_GD20HM303DLHC_GYRO_BW          "GD20HM303DLHCGyroBW"
 #define RTIMULIB_GD20HM303DLHC_GYRO_HPF         "GD20HM303DLHCGyroHpf"
@@ -106,7 +100,6 @@
 
 
 //  LSM9DS0 settings keys
-
 #define RTIMULIB_LSM9DS0_GYRO_SAMPLERATE   "LSM9DS0GyroSampleRate"
 #define RTIMULIB_LSM9DS0_GYRO_BW           "LSM9DS0GyroBW"
 #define RTIMULIB_LSM9DS0_GYRO_HPF          "LSM9DS0GyroHpf"
@@ -120,7 +113,6 @@
 #define RTIMULIB_LSM9DS0_COMPASS_FSR       "LSM9DS0CompassFsr"
 
 //  LSM9DS1 settings keys
-
 #define RTIMULIB_LSM9DS1_GYRO_SAMPLERATE   "LSM9DS1GyroSampleRate"
 #define RTIMULIB_LSM9DS1_GYRO_BW           "LSM9DS1GyroBW"
 #define RTIMULIB_LSM9DS1_GYRO_HPF          "LSM9DS1GyroHpf"
@@ -134,7 +126,6 @@
 #define RTIMULIB_LSM9DS1_COMPASS_FSR       "LSM9DS1CompassFsr"
 
 //  BMX055 settings keys
-
 #define RTIMULIB_BMX055_GYRO_SAMPLERATE     "BMX055GyroSampleRate"
 #define RTIMULIB_BMX055_GYRO_FSR            "BMX055GyroFsr"
 
@@ -144,14 +135,12 @@
 #define RTIMULIB_BMX055_MAG_PRESET          "BMX055MagPreset"
 
 //  Gyro bias keys
-
 #define RTIMULIB_GYRO_BIAS_VALID            "GyroBiasValid"
 #define RTIMULIB_GYRO_BIAS_X                "GyroBiasX"
 #define RTIMULIB_GYRO_BIAS_Y                "GyroBiasY"
 #define RTIMULIB_GYRO_BIAS_Z                "GyroBiasZ"
 
 //  Compass calibration and adjustment settings keys
-
 #define RTIMULIB_COMPASSCAL_VALID           "CompassCalValid"
 #define RTIMULIB_COMPASSCAL_MINX            "CompassCalMinX"
 #define RTIMULIB_COMPASSCAL_MAXX            "CompassCalMaxX"
@@ -177,7 +166,6 @@
 #define RTIMULIB_COMPASSADJ_DECLINATION     "compassAdjDeclination"
 
 //  Accel calibration settings keys
-
 #define RTIMULIB_ACCELCAL_VALID             "AccelCalValid"
 #define RTIMULIB_ACCELCAL_MINX              "AccelCalMinX"
 #define RTIMULIB_ACCELCAL_MAXX              "AccelCalMaxX"
@@ -192,38 +180,30 @@ class RTIMUSettings : public RTIMUHal
 public:
 
     //  Standard constructor sets up for ini file in working directory
-
-    RTIMUSettings(const char *productType = "RTIMULib");
+    RTIMUSettings( const char *productType = "RTIMULib" );
 
     //  Alternate constructor allow ini file to be in any directory
-
-    RTIMUSettings(const char *settingsDirectory, const char *productType);
+    RTIMUSettings( const char *settingsDirectory, const char *productType   );
 
     //  This function tries to find an IMU. It stops at the first valid one
     //  and returns true or else false
-
-    bool discoverIMU(int& imuType, bool& busIsI2C, unsigned char& slaveAddress);
+    bool discoverIMU        ( int& imuType,          bool& busIsI2C, unsigned char& slaveAddress    );
 
     //  This function tries to find a pressure sensor. It stops at the first valid one
     //  and returns true or else false
-
-    bool discoverPressure(int& pressureType, unsigned char& pressureAddress);
+    bool discoverPressure   ( int& pressureType,    unsigned char& pressureAddress  );
 
     //  This function tries to find a humidity sensor. It stops at the first valid one
     //  and returns true or else false
-
-    bool discoverHumidity(int& humidityType, unsigned char& humidityAddress);
+    bool discoverHumidity   ( int& humidityType,    unsigned char& humidityAddress  );
 
     //  This function sets the settings to default values.
-
     void setDefaults();
 
     //  This function loads the local variables from the settings file or uses defaults
-
     virtual bool loadSettings();
 
     //  This function saves the local variables to the settings file
-
     virtual bool saveSettings();
 
     //  These are the local variables

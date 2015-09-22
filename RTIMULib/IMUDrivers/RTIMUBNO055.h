@@ -34,15 +34,15 @@ public:
     ~RTIMUBNO055();
 
     virtual const char *IMUName() { return "BNO055"; }
-    virtual int IMUType() { return RTIMU_TYPE_BNO055; }
-    virtual bool IMUInit();
-    virtual int IMUGetPollInterval();
-    virtual bool IMURead();
+    virtual int         IMUType() { return RTIMU_TYPE_BNO055; }
+    virtual bool        IMUInit();
+    virtual int         IMUGetPollInterval();
+    virtual bool        IMURead();
 
 private:
-    unsigned char m_slaveAddr;                              // I2C address of BNO055
+    unsigned char   m_slaveAddr;                              // I2C address of BNO055
 
-    uint64_t m_lastReadTime;
+    uint64_t        m_lastReadTime;
 };
 
 #endif // _RTIMUBNO055_H
